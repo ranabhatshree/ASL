@@ -46,8 +46,7 @@ while True:
     
     # Resizing the ROI so it can be fed to the model for prediction
     roi = cv2.resize(roi, (IMG_SIZE, IMG_SIZE)) 
-    #roi2 = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-    #_, test_image = cv2.threshold(roi2, 120, 255, cv2.THRESH_BINARY)
+
     cv2.imshow("output", roi)
     
     # Batch of 1
@@ -55,17 +54,6 @@ while True:
     final_result = np.argmax(result)
 
     prediction = categories[final_result]
-    """  prediction = {'A': result[0][0], 
-                  'B': result[0][1], 
-                  'C': result[0][2],
-                 
-                  }
-  
-
-    
-    # Sorting based on top prediction
-    prediction = sorted(prediction.items(), key=operator.itemgetter(1), reverse=True)
-    """
     
     # Displaying the predictions
     cv2.putText(frame, str(prediction), (10, 120), cv2.FONT_HERSHEY_PLAIN, 2, (255,0,255), 3)    
